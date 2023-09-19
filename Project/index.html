@@ -18,53 +18,30 @@
         <ul class="list-group container-md d-flex flex-row justify-content-evenly">
             <li class="list-group-item"><span class="focus-ring py-1 px-2 text-decoration-none border rounded-2" onclick="getRandomRecipe('Beef')">Beef/Steak</span></li>
             <li class="list-group-item"><span class="focus-ring py-1 px-2 text-decoration-none border rounded-2" onclick="getRandomRecipe('Chicken')">Chicken</span></li>
+            <li class="list-group-item"><span class="focus-ring py-1 px-2 text-decoration-none border rounded-2" onclick="getRandomRecipe('Pasta')">Pasta</span></li>
             <li class="list-group-item"><span class="focus-ring py-1 px-2 text-decoration-none border rounded-2" onclick="getRandomRecipe('Vegetarian')">Vegetarian</span></li>
             <li class="list-group-item"><span class="focus-ring py-1 px-2 text-decoration-none border rounded-2" onclick="getRandomRecipe('idk')">Surprise Me</span></li>
         </ul>
     </div>
-    <div class="container-md bg-primary-subtle px-20" >  <!-- This div will hold the elements of the recipie that is retrieved via the API-->
+    <div class="container-md bg-primary-subtle px-20 row-gap-3" >  <!-- This div will hold the elements of the recipie that is retrieved via the API-->
         <h2 class="display-2" id="recipeTitle">Recipie Title</h2>
-        <div class="container-md bg-success-subtle row px-10" >
-            <div class="col px-5">Key Ingredients:
-                <ul>
-                    <li>Chuck Roast</li>
-                </ul>
-            </div>
-            <div class="col px-5"> Main Ingredients
-                <ul>
-                    <li>Potatoes</li>
-                    <li>Corn</li>
-                    <li>Diced Tomatoes</li>
-                </ul>
-            </div>
-            <div class="col px-5">Other Ingredients
-                <ul>
-                    <li>Brown Gravy Mix</li>
-                </ul>
-            </div>
-            <div class="col px-5">Spices:
-                <ul>
-                    <li>Salt</li>
-                    <li>Pepper</li>
-                    <li>Garlic</li>
-                </ul>
-            </div>
+        <img src="#" alt="hidden at the start" class="invisible" id="foodPic">
+        <div class="container-md bg-success-subtle px-10" >
+            <h5 class="display-5">Ingredients:
+                <!-- <span id="ingredientList">Your Ingredients are listed here</span> -->
+                <ul id="ingredientList">Your Ingredients are listed here</ul>
+            </h5>
         </div>
-        <div class="contiainer-xs px-10 bg-success-subtle">
-            <h5>Prep Time:</h5> 30 Minutes
-            <h5>Total Cooking Time: </h5>90 Minutes
-        </div>
-        <div class="container-md px-10 bg-success-subtle">
-            <h5>Full Ingredient List</h5>
-            <h6>Spice List</h6>
-        </div>
-        <div class="container-md px-10 bg-success-subtle">
-            <h5>Stove/Oven Settings</h5>
-            <span>Preheat Oven to 400 (F) Degrees</span>
-        </div>
-        <div class="container-md px-10 bg-success-subtle">
+        <div class="container-md bg-success-subtle">
             <h5>Cooking Directions:</h5>
-            <span>Mix ingredients in a roasting pan, and place into oven for 45 Minutes.  Allow 5 minutes to cool before serving</span>
+            <span id="instructions" class="">Your cooking directions will be listed here</span>
+        </div>
+        <!-- <div class="container-md bg-success-subtle invisible" id="videoContainer">
+            Watch on Youtube:
+            <iframe width="560" height="315" src="#" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen id="videoFrame"></iframe>
+        </div> -->
+        <div class="container-md bg-success-subtle">
+            <h6><a href="#" id="sourceLink" class="invisible">Source</a></h6>
         </div>
     </div>
     <script src="script.js"></script>
