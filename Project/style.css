@@ -1,0 +1,14 @@
+*{
+    border: 0;
+    margin: 0;
+}
+.icon{
+    width: 100px;
+    height: 100px;
+}
+.circle{
+    border-radius: 50%;
+}
+img {
+    height:300px
+}

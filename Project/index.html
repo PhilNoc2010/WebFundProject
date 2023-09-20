@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Meal Planning Suggestion Generator</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
   <body>
@@ -11,21 +12,23 @@
         <h1 class="display-1">Meal Planning Suggestion Generator</h1>
     </div>
     <div class="d-flex justify-content-between container-md">
-        <h3>Choose a starting ingredient</h3>
+        <h3>Choose a primary ingredient</h3>
         <h3>Suggest Another</h3>
     </div>
     <div class="container-md border border-primary">
         <ul class="list-group container-md d-flex flex-row justify-content-evenly">
-            <li class="list-group-item"><span class="focus-ring py-1 px-2 text-decoration-none border rounded-2" onclick="getRandomRecipe('Beef')">Beef/Steak</span></li>
-            <li class="list-group-item"><span class="focus-ring py-1 px-2 text-decoration-none border rounded-2" onclick="getRandomRecipe('Chicken')">Chicken</span></li>
-            <li class="list-group-item"><span class="focus-ring py-1 px-2 text-decoration-none border rounded-2" onclick="getRandomRecipe('Pasta')">Pasta</span></li>
-            <li class="list-group-item"><span class="focus-ring py-1 px-2 text-decoration-none border rounded-2" onclick="getRandomRecipe('Vegetarian')">Vegetarian</span></li>
-            <li class="list-group-item"><span class="focus-ring py-1 px-2 text-decoration-none border rounded-2" onclick="getRandomRecipe('idk')">Surprise Me</span></li>
+            <li class="list-group-item"><span class="focus-ring py-1 px-2 text-decoration-none border rounded-2" onclick="getRandomRecipe('Beef')"><img src="images/meat-576422_1280.png" alt="Beef" class="icon">Beef/Steak</span></li>
+            <li class="list-group-item"><span class="focus-ring py-1 px-2 text-decoration-none border rounded-2" onclick="getRandomRecipe('Chicken')"><img src="images/chicken-4392550_1280.png" alt="Chicken" class="icon">Chicken</span></li>
+            <li class="list-group-item"><span class="focus-ring py-1 px-2 text-decoration-none border rounded-2" onclick="getRandomRecipe('Pasta')"><img src="images/pasta_plate.png" alt="Pasta" class="icon">Pasta</span></li>
+            <li class="list-group-item"><span class="focus-ring py-1 px-2 text-decoration-none border rounded-2" onclick="getRandomRecipe('Vegetarian')"><img src="images/vegetarian.png" alt="Vegetarian" class="icon">Vegetarian</span></li>
+            <li class="list-group-item"><span class="focus-ring py-1 px-2 text-decoration-none border rounded-2" onclick="getRandomRecipe('idk')"> <img src="images/surpise.jpg" alt="surpise" class="circle icon">Surprise Me</span></li>
         </ul>
     </div>
     <div class="container-md bg-primary-subtle px-20 row-gap-3" >  <!-- This div will hold the elements of the recipie that is retrieved via the API-->
-        <h2 class="display-2" id="recipeTitle">Recipie Title</h2>
-        <img src="#" alt="hidden at the start" class="invisible" id="foodPic">
+        <div class="d-flex justify-content-center align-items-center py-2" id="titleBox">
+            <h2 class="display-2" id="recipeTitle">Please click above to retrieve a random recipe</h2>
+            <img src="#" alt="hidden at the start" class="invisible" id="foodPic">
+        </div>
         <div class="container-md bg-success-subtle px-10" >
             <h5 class="display-5">Ingredients:
                 <!-- <span id="ingredientList">Your Ingredients are listed here</span> -->
@@ -36,10 +39,10 @@
             <h5>Cooking Directions:</h5>
             <span id="instructions" class="">Your cooking directions will be listed here</span>
         </div>
-        <!-- <div class="container-md bg-success-subtle invisible" id="videoContainer">
-            Watch on Youtube:
-            <iframe width="560" height="315" src="#" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen id="videoFrame"></iframe>
-        </div> -->
+        <div class="container-md bg-success-subtle invisible py-3 d-flex align-items-center justify-content-evenly" id="videoContainer">
+            <h3 class="display-3">Watch on Youtube:</h3>
+            <iframe width="560" height="315" src="#" title="recipeVid" id="videoFrame"></iframe>
+        </div>
         <div class="container-md bg-success-subtle">
             <h6><a href="#" id="sourceLink" class="invisible">Source</a></h6>
         </div>

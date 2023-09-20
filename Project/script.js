@@ -1,3 +1,11 @@
+function getVideoID(ytURL){
+    //Extracts the Video ID from a given YouTube URL so that the proper embed link can be created
+    var idx = ytURL.search("v=") + 2
+    var videoID = ytURL.substring(idx,idx + 11)
+
+    return videoID
+}
+
 async function getRandomRecipe(ingredient){
 
     if (ingredient == "idk") {
@@ -22,6 +30,8 @@ async function getRandomRecipe(ingredient){
 
     //This section of the function will update the HTML on the webpage
     document.querySelector("#recipeTitle").innerText = recipeJSON.meals[0].strMeal
+    document.getElementById("titleBox").classList.remove("justify-content-center")
+    document.getElementById("titleBox").classList.add("justify-content-between")
     document.querySelector("#foodPic").alt = recipeJSON.meals[0].strMeal
     document.querySelector("#foodPic").src = recipeJSON.meals[0].strMealThumb
     document.querySelector("#foodPic").className = "visible"
@@ -34,12 +44,7 @@ async function getRandomRecipe(ingredient){
     for (var i = 1; i <= 20; i++){
         ingredientIDX = `strIngredient${i}`
         measureIDX = `strMeasure${i}`
-
         if (recipeJSON.meals[0][ingredientIDX] == "") {break}
-
-        console.log(recipeJSON.meals[0][ingredientIDX] )
-
-        // ingredientList = ingredientList + `${recipeJSON.meals[0][measureIDX]} ${recipeJSON.meals[0][ingredientIDX]} \n`
         ingredientList = ingredientList + `<li>${recipeJSON.meals[0][measureIDX]} ${recipeJSON.meals[0][ingredientIDX]}</li>`
         }
 
@@ -47,12 +52,17 @@ async function getRandomRecipe(ingredient){
 
     document.getElementById("instructions").innerText = recipeJSON.meals[0].strInstructions
 
-    //if the API returns a Youtube Link, include this on the page
-    // if (recipeJSON.meals[0].strYoutube != null) {
-    //     document.getElementById("videoContainer").classList.remove("invisible")
-    //     document.getElementById("videoFrame").src = recipeJSON.meals[0].strYoutube
-    // }
+    // if the API returns a Youtube Link, include this on the page
+    if (recipeJSON.meals[0].strYoutube != null) {
 
+        document.getElementById("videoContainer").classList.remove("invisible")
+
+        var ytLink = getVideoID(recipeJSON.meals[0].strYoutube)
+        var embedLink = `https://www.youtube.com/embed/${ytLink}?controls=0`
+
+       document.getElementById("videoFrame").src = embedLink
+
+    }
 
     //if the API Includes a source Link, provide it to the user.  otherwise, this will remain hidden
     if (recipeJSON.meals[0].strSource != null){
@@ -61,3 +71,5 @@ async function getRandomRecipe(ingredient){
     }
 
 }
+
+
