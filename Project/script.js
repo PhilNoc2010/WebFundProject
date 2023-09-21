@@ -34,6 +34,7 @@ async function getRandomRecipe(ingredient){
     document.getElementById("titleBox").classList.add("justify-content-between")
     document.querySelector("#foodPic").alt = recipeJSON.meals[0].strMeal
     document.querySelector("#foodPic").src = recipeJSON.meals[0].strMealThumb
+    document.querySelector("#foodPic").height = 400
     document.querySelector("#foodPic").className = "visible"
 
     //Assembles the list of ingrediants with the quantity in order to
@@ -44,13 +45,19 @@ async function getRandomRecipe(ingredient){
     for (var i = 1; i <= 20; i++){
         ingredientIDX = `strIngredient${i}`
         measureIDX = `strMeasure${i}`
-        if (recipeJSON.meals[0][ingredientIDX] == "") {break}
+        if (recipeJSON.meals[0][ingredientIDX] == "" || recipeJSON.meals[0][ingredientIDX] == null) {break}
         ingredientList = ingredientList + `<li>${recipeJSON.meals[0][measureIDX]} ${recipeJSON.meals[0][ingredientIDX]}</li>`
         }
 
     document.getElementById("ingredientList").innerHTML = ingredientList
 
-    document.getElementById("instructions").innerText = recipeJSON.meals[0].strInstructions
+    // some api data is not formatted in a readable way, so these steps will replace periods with
+    //new line characters to improve readability
+
+    var text = recipeJSON.meals[0].strInstructions
+    var reformattedText = text.replaceAll(". ", ".\n")
+
+    document.getElementById("instructions").innerText = reformattedText
 
     // if the API returns a Youtube Link, include this on the page
     if (recipeJSON.meals[0].strYoutube != null) {
@@ -61,6 +68,7 @@ async function getRandomRecipe(ingredient){
         var embedLink = `https://www.youtube.com/embed/${ytLink}?controls=0`
 
        document.getElementById("videoFrame").src = embedLink
+       document.getElementById("videoFrame").height = 315
 
     }
 
